@@ -1,0 +1,10 @@
+{
+  "preview": {
+    "current": {
+      "platform": "gameView"
+    }
+  },
+  "general": {
+    "start_scene": "current_scene"
+  }
+}
