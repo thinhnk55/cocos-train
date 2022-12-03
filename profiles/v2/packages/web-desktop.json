@@ -1,0 +1,32 @@
+{
+  "common": {
+    "polyfills": {
+      "asyncFunctions": true
+    },
+    "scenes": [
+      {
+        "url": "db://assets/Main.scene",
+        "uuid": "b51bddc7-b21b-42dc-82f1-122e020ecc19",
+        "inBundle": false
+      }
+    ],
+    "mainBundleIsRemote": true,
+    "useBuiltinServer": true,
+    "md5Cache": true,
+    "debug": true,
+    "sourceMaps": true,
+    "experimentalEraseModules": true,
+    "replaceSplashScreen": false,
+    "skipCompressTexture": true
+  },
+  "options": {
+    "web-desktop": {
+      "useWebGPU": false,
+      "resolution": {
+        "designWidth": 1920,
+        "designHeight": 1080
+      },
+      "__version__": "1.0.1"
+    }
+  }
+}

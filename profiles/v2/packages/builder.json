@@ -1,5 +1,81 @@
 {
   "log": {
     "level": 4
+  },
+  "common": {
+    "polyfills": {
+      "asyncFunctions": true
+    },
+    "scenes": [
+      {
+        "url": "db://assets/Main.scene",
+        "uuid": "b51bddc7-b21b-42dc-82f1-122e020ecc19",
+        "inBundle": false
+      }
+    ],
+    "mainBundleIsRemote": true,
+    "useBuiltinServer": true,
+    "md5Cache": true,
+    "debug": true,
+    "sourceMaps": true,
+    "experimentalEraseModules": true,
+    "replaceSplashScreen": false,
+    "skipCompressTexture": true
+  },
+  "BuildTaskManager": {
+    "taskMap": {
+      "1670083638882": {
+        "type": "build",
+        "id": "1670083638882",
+        "progress": 1,
+        "state": "success",
+        "stage": "build",
+        "message": "12-4-2022 00:26:41 Build success in 6165 ms!",
+        "options": {
+          "name": "cocos-2",
+          "platform": "web-desktop",
+          "buildPath": "project://build",
+          "debug": true,
+          "md5Cache": true,
+          "skipCompressTexture": true,
+          "sourceMaps": true,
+          "polyfills": {
+            "asyncFunctions": true
+          },
+          "experimentalEraseModules": true,
+          "useBuiltinServer": true,
+          "mainBundleIsRemote": true,
+          "mainBundleCompressionType": "merge_dep",
+          "replaceSplashScreen": false,
+          "startScene": "b51bddc7-b21b-42dc-82f1-122e020ecc19",
+          "outputName": "web-desktop",
+          "scenes": [
+            {
+              "url": "db://assets/Main.scene",
+              "uuid": "b51bddc7-b21b-42dc-82f1-122e020ecc19",
+              "inBundle": false
+            }
+          ],
+          "web-desktop": [],
+          "packages": {
+            "web-desktop": {
+              "useWebGPU": false,
+              "resolution": {
+                "designWidth": 1920,
+                "designHeight": 1080
+              },
+              "__version__": "1.0.1"
+            },
+            "cocos-service": {
+              "configID": "96bf04",
+              "services": []
+            }
+          },
+          "__version__": "1.3.3"
+        },
+        "time": "12-4-2022 00:26",
+        "dirty": false
+      }
+    }
   }
 }
