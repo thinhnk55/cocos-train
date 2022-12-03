@@ -1,7 +1,6 @@
 import { _decorator, Component, Node, AudioSource, log } from 'cc';
-import { AudioManager } from './Common/AudioManager';
 const { ccclass, property } = _decorator;
-
+import { AudioManager } from './Common/AudioManager';
 @ccclass('Main')
 export class Main extends Component {
     public static instance: Main = null;
@@ -12,6 +11,7 @@ export class Main extends Component {
     start() {
         AudioManager.init(this.audioSource);
         Main.instance = this;
+        log('Main start');
     }
 }
 
