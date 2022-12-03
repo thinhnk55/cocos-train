@@ -11,7 +11,7 @@ export class Gate extends Component {
         .node
         .on(Node.EventType.TOUCH_END, (event) => {
             console.log("Press Gate");
-            Main.instance.showHome();
+            Main.instance.showMultiple1();
         });
     }
 

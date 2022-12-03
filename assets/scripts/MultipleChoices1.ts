@@ -1,13 +1,13 @@
 import { _decorator, Component, Node, Button } from 'cc';
-import { Main } from './Main';
 const { ccclass, property } = _decorator;
+import {Main} from './Main';
 
-@ccclass('Home')
-export class Home extends Component {
+@ccclass('MultipleChoices1')
+export class MultipleChoices1 extends Component {
     @property({type:[Button]})
     menu: Button[] = [];
     @property({type:[Button]})
-    subjects: Button[] = [];
+    fruits: Button[] = [];
 
     start() {
         for(var i = 0; i < this.menu.length; i++){
@@ -16,16 +16,19 @@ export class Home extends Component {
             .node
             .on(Node.EventType.TOUCH_END, (event) => {
                 console.log("Press Menu", index);
+                if(index == 0){
+                    Main.instance.showHome();
+                }
             });
         }
-        for(var i = 0; i < this.subjects.length; i++){
+        for(var i = 0; i < this.fruits.length; i++){
             const index = i;
-            this.subjects[index]
+            this.fruits[index]
             .node
             .on(Node.EventType.TOUCH_END, (event) => {
-                console.log("Press Subject", index);
+                console.log("Press fruits", index);
                 if(index == 0){
-                    Main.instance.showGate();
+                    
                 }
             });
         }
