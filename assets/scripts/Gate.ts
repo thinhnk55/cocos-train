@@ -1,4 +1,5 @@
-import { _decorator, Component, Node, Sprite } from 'cc';
+import { _decorator, Component, Node, Sprite, AudioSource, log} from 'cc';
+import { AudioManager } from './base/AudioManager';
 const { ccclass, property } = _decorator;
 import { Main } from './Main';
 
@@ -10,13 +11,21 @@ export class Gate extends Component {
         this.background
         .node
         .on(Node.EventType.TOUCH_END, (event) => {
-            console.log("Press Gate");
-            Main.instance.showMultiple1();
+            log("Press Gate");
+            AudioManager.playSound('Sound/Gate/door-opening',
+            this.soundHanlder.bind(this));
         });
+        log("Gate start");  
+    }
+    soundHanlder(path: string, duration: number){
+        log("soundHandler:", path, duration);
+        this.scheduleOnce(function() {
+            Main.instance.showMultiple1();
+        }, duration);
     }
 
-    update(deltaTime: number) {
+    // update(deltaTime: number) {
         
-    }
+    // }
 }
 
