@@ -12,7 +12,7 @@ export class Gate extends Component {
         .node
         .on(Node.EventType.TOUCH_END, (event) => {
             log("Press Gate");
-            AudioManager.playSound('Sound/Gate/door-opening',
+            AudioManager.playSound('DarkForest/Sound/Gate/door-opening',
             this.soundHanlder.bind(this));
         });
         log("Gate start");  
@@ -20,7 +20,7 @@ export class Gate extends Component {
     soundHanlder(path: string, duration: number){
         log("soundHandler:", path, duration);
         this.scheduleOnce(function() {
-            Main.instance.showMultiple1();
+
         }, Math.ceil(duration));
     }
 
