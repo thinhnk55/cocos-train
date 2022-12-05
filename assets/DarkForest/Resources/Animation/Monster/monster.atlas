@@ -1,0 +1,160 @@
+
+monster.png
+size: 938, 334
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+Layer 57
+  rotate: false
+  xy: 235, 23
+  size: 58, 18
+  orig: 63, 22
+  offset: 1, 1
+  index: -1
+Layer 58
+  rotate: false
+  xy: 828, 40
+  size: 58, 18
+  orig: 63, 22
+  offset: 4, 1
+  index: -1
+Layer 59
+  rotate: false
+  xy: 62, 6
+  size: 58, 35
+  orig: 58, 35
+  offset: 0, 0
+  index: -1
+Layer 59 copy
+  rotate: false
+  xy: 2, 6
+  size: 58, 35
+  orig: 58, 35
+  offset: 0, 0
+  index: -1
+Layer 62
+  rotate: false
+  xy: 312, 77
+  size: 308, 255
+  orig: 308, 255
+  offset: 0, 0
+  index: -1
+chan1
+  rotate: true
+  xy: 407, 8
+  size: 67, 72
+  orig: 67, 72
+  offset: 0, 0
+  index: -1
+chan2
+  rotate: true
+  xy: 481, 7
+  size: 68, 72
+  orig: 68, 72
+  offset: 0, 0
+  index: -1
+dau
+  rotate: false
+  xy: 2, 43
+  size: 308, 289
+  orig: 308, 289
+  offset: 0, 0
+  index: -1
+mah1
+  rotate: false
+  xy: 888, 35
+  size: 40, 23
+  orig: 42, 25
+  offset: 1, 1
+  index: -1
+mah2
+  rotate: false
+  xy: 888, 35
+  size: 40, 23
+  orig: 42, 25
+  offset: 1, 1
+  index: -1
+mat1
+  rotate: false
+  xy: 773, 87
+  size: 53, 55
+  orig: 55, 57
+  offset: 1, 1
+  index: -1
+mat2
+  rotate: false
+  xy: 555, 20
+  size: 53, 55
+  orig: 55, 57
+  offset: 1, 1
+  index: -1
+mom
+  rotate: false
+  xy: 622, 85
+  size: 149, 57
+  orig: 151, 59
+  offset: 1, 1
+  index: -1
+mom2
+  rotate: false
+  xy: 186, 11
+  size: 47, 30
+  orig: 50, 32
+  offset: 2, 1
+  index: -1
+mon3
+  rotate: false
+  xy: 312, 18
+  size: 93, 57
+  orig: 97, 57
+  offset: 4, 0
+  index: -1
+mui
+  rotate: true
+  xy: 828, 2
+  size: 36, 25
+  orig: 38, 27
+  offset: 1, 1
+  index: -1
+nuoc
+  rotate: false
+  xy: 122, 11
+  size: 62, 30
+  orig: 64, 32
+  offset: 1, 1
+  index: -1
+sung1
+  rotate: true
+  xy: 622, 7
+  size: 76, 101
+  orig: 76, 101
+  offset: 0, 0
+  index: -1
+sung2
+  rotate: true
+  xy: 725, 7
+  size: 76, 101
+  orig: 76, 101
+  offset: 0, 0
+  index: -1
+tay1
+  rotate: false
+  xy: 831, 198
+  size: 105, 134
+  orig: 105, 134
+  offset: 0, 0
+  index: -1
+tay2
+  rotate: false
+  xy: 831, 60
+  size: 102, 136
+  orig: 102, 136
+  offset: 0, 0
+  index: -1
+than
+  rotate: false
+  xy: 622, 144
+  size: 207, 188
+  orig: 207, 188
+  offset: 0, 0
+  index: -1

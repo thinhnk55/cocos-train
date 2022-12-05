@@ -1,11 +1,7 @@
-import { _decorator, Node, Prefab, assetManager, instantiate, log, AssetManager} from 'cc';
+import { _decorator, AssetManager, assetManager, log} from 'cc';
 const { ccclass, property } = _decorator;
-import {Main} from '../Main';
 
 export class BundleManager{
-    getBundle(bundleName: string):AssetManager.Bundle {
-        throw new Error("Method not implemented.");
-    }
     private static ins: BundleManager = null;
     static instance():BundleManager{
         if(!BundleManager.ins){
@@ -15,47 +11,29 @@ export class BundleManager{
     }    
 
     private constructor(){
-        this.prefabMap = new Map<string, Node>();
+        this.bundleMap = new Map<string, AssetManager.Bundle>();
         log('BundleManager init');
     }
 
     private bundleMap: Map<string, AssetManager.Bundle> = null;
-    private prefabMap: Map<string, Node> = null;
-    private currentTop: Node = null;
 
-    loadBundle(bundleName:string, prefabPath: string, calback:Function){
-        const prefabKey = bundleName + '/' + prefabPath;
-        log('loadBundle:', prefabKey);
-        let node = this.prefabMap.get(prefabKey);
-        if(node){
-            calback(0);
+    loadBundle(bundleName: string, callback?: Function) {
+        log('loadBundle', bundleName);
+        let bundle = this.bundleMap.get(bundleName);
+        if(bundle){
+            log('loadBundle exist', bundleName);
+            if(callback) callback(0, bundle);
             return;
         }
         assetManager.loadBundle(bundleName, (err, bundle) => {
-            bundle.load(prefabPath, Prefab, function (err, prefab) {
-                if(err){
-                    calback(1);
-                    return;
-                }
-                BundleManager.ins.bundleMap.set(bundleName, bundle);
-                let newNode = instantiate(prefab);
-                Main.instance.node.addChild(newNode);
-                BundleManager.ins.prefabMap.set(prefabKey, newNode);
-                log('add prefab', prefabPath);
-                calback(0);
-            });
-        });
-    }
-
-    show(prefabKey:string){
-        let node = this.prefabMap.get(prefabKey);
-        if(node){
-            if(this.currentTop){
-                this.currentTop.active = false;
+            if (err) {
+                log('loadBundle error', bundleName, err);
+                if(callback) callback(1, bundle);
+                return;
             }
-            this.currentTop = node;
-            this.currentTop.active = true;
-        }
-        log('show', prefabKey);
+            BundleManager.ins.bundleMap.set(bundleName, bundle);
+            if(callback) callback(0, bundle);
+            log('loadBundle ok', bundleName);
+        });
     }
 }

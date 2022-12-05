@@ -3,10 +3,15 @@
     "web-desktop": {
       "configID": "96bf04",
       "services": []
+    },
+    "windows": {
+      "configID": "96bf04",
+      "services": []
     }
   },
   "builder-options": {
     "configID": "96bf04",
-    "services": []
+    "services": [],
+    "__version__": "3.0.4"
   }
 }

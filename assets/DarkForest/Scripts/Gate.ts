@@ -1,6 +1,6 @@
-import { _decorator, Component, Node, Sprite, AudioSource, log} from 'cc';
+import { _decorator, Component, Node, Sprite, AudioSource, log, AudioClip} from 'cc';
 import { AudioManager } from '../../Scripts/Common/AudioManager';
-import { Main } from '../../Scripts/Main';
+import { ScreenManager } from '../../Scripts/Common/ScreenManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('DF-Gate')
@@ -12,20 +12,16 @@ export class Gate extends Component {
         .node
         .on(Node.EventType.TOUCH_END, (event) => {
             log("Press Gate");
-            AudioManager.playSound('DarkForest/Sound/Gate/door-opening',
+            AudioManager.instance().playSound('DarkForest', 'Resources/Sound/door-opening',
             this.soundHanlder.bind(this));
         });
-        log("Gate start");  
     }
-    soundHanlder(path: string, duration: number){
-        log("soundHandler:", path, duration);
-        this.scheduleOnce(function() {
-
-        }, Math.ceil(duration));
+    soundHanlder(error: number, audioKey: string, audioClip: AudioClip){
+        if(error == 0){
+            this.scheduleOnce(function() {
+                ScreenManager.instance().show('DarkForest', 'Prefabs/T1');
+            }, Math.ceil(audioClip.getDuration()));
+        }
     }
-
-    // update(deltaTime: number) {
-        
-    // }
 }
 

@@ -1,0 +1,11 @@
+{
+  "common": {
+    "buildPath": "project://build",
+    "outputName": "windows",
+    "mainBundleCompressionType": "merge_dep",
+    "platform": "windows",
+    "mainBundleIsRemote": false,
+    "useBuiltinServer": false,
+    "debug": false
+  }
+}

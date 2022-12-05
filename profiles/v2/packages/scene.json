@@ -38,7 +38,7 @@
   "camera-infos": {
     "c77ecaa8-c936-46c4-a5b0-98692673ed87": {
       "position": {
-        "x": 960,
+        "x": 959.9999999999999,
         "y": 540,
         "z": 5000
       },
@@ -56,8 +56,8 @@
     },
     "b51bddc7-b21b-42dc-82f1-122e020ecc19": {
       "position": {
-        "x": 928.2644628099173,
-        "y": 540,
+        "x": 1036.3748236182953,
+        "y": 582.0287764542877,
         "z": 5000
       },
       "rotation": {
@@ -109,12 +109,13 @@
   },
   "game-view": {
     "devicesInfo": {
-      "name": "16:10",
-      "type": "ratio",
-      "width": 16,
-      "height": 10
+      "name": "iPhone 8 Plus",
+      "type": "device",
+      "width": 414,
+      "height": 736
     },
     "scaleValue": 85,
-    "sliderValue": 42
+    "sliderValue": 42,
+    "rotate": true
   }
 }

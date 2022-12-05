@@ -1,0 +1,11 @@
+{
+  "options": {
+    "windows": {
+      "encrypted": false,
+      "xxteaKey": "0egOSDUGFNx49PII",
+      "compressZip": true,
+      "JobSystem": "none",
+      "__version__": "1.0.2"
+    }
+  }
+}

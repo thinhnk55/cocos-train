@@ -1,5 +1,5 @@
 import { _decorator, Component, Node, Button, log} from 'cc';
-import { BundleManager } from '../../Scripts/Common/BundleManager';
+import { ScreenManager } from '../../Scripts/Common/ScreenManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('Home')
@@ -25,20 +25,11 @@ export class Home extends Component {
             .on(Node.EventType.TOUCH_END, (event) => {
                 console.log("Press Subject", index);
                 if(index == 0){   
-                    BundleManager.instance().loadBundle('DarkForest', 'Prefabs/Gate',
-                    this.loadGate.bind(this));
+                    ScreenManager.instance().show('DarkForest', 'Prefabs/Gate');
                 }
             });
         }
     }
-    loadGate(error:number){
-        if(error == 0){
-            BundleManager.instance().show('DarkForest/Prefabs/Gate');
-        }else{
-            log('loadGate Error');
-        }
-    }
-
     // update(deltaTime: number) {
         
     // }
