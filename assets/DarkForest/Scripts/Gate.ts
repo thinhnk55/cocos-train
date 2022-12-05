@@ -14,14 +14,15 @@ export class Gate extends Component {
             log("Press Gate");
             AudioManager.instance().playSound('DarkForest', 'Resources/Sound/door-opening',
             this.soundHanlder.bind(this));
+            ScreenManager.instance().show('DarkForest', 'Prefabs/T1');
         });
     }
     soundHanlder(error: number, audioKey: string, audioClip: AudioClip){
-        if(error == 0){
-            this.scheduleOnce(function() {
-                ScreenManager.instance().show('DarkForest', 'Prefabs/T1');
-            }, Math.ceil(audioClip.getDuration()));
-        }
+        // if(error == 0){
+        //     this.scheduleOnce(function() {
+                
+        //     }, Math.ceil(audioClip.getDuration()));
+        // }
     }
 }
 
