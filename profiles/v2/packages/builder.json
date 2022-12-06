@@ -22,9 +22,9 @@
     "replaceSplashScreen": false,
     "skipCompressTexture": true,
     "buildPath": "project://build",
-    "outputName": "windows",
+    "outputName": "mac",
     "mainBundleCompressionType": "merge_dep",
-    "platform": "windows"
+    "platform": "mac"
   },
   "BuildTaskManager": {
     "taskMap": {
@@ -81,13 +81,13 @@
         "time": "12-4-2022 00:26",
         "dirty": false
       },
-      "1670314431039": {
+      "1670233719196": {
         "type": "build",
-        "id": "1670314431039",
+        "id": "1670233719196",
         "progress": 1,
-        "state": "success",
-        "stage": "run",
-        "message": "12-6-2022 15:18:27 run package D:\\projects\\cocos\\cocos-train\\build\\windows success!",
+        "state": "failure",
+        "stage": "build",
+        "message": "12-5-2022 18:08:56 build failed!run cmake failed \"cmake -S\"D:/projects/cocos/cocos-train/native/engine/win64\" -B\"D:/projects/cocos/cocos-train/build/windows/proj\" -DRES_DIR=\"D:/projects/cocos/cocos-train/build/windows\" -DAPP_NAME=\"cocos-2\" \", code: 1, signal: null",
         "options": {
           "name": "cocos-2",
           "platform": "windows",
@@ -139,7 +139,74 @@
           },
           "__version__": "1.3.3"
         },
-        "time": "12-6-2022 15:13",
+        "time": "12-5-2022 18:08",
+        "dirty": false
+      },
+      "1670339365169": {
+        "type": "build",
+        "id": "1670339365169",
+        "progress": 1,
+        "state": "success",
+        "stage": "make",
+        "message": "12-6-2022 22:25:47 make package /Users/thinhnguyenkhanh/Git/cocos-2d/build/mac success!",
+        "options": {
+          "name": "cocos-2",
+          "platform": "mac",
+          "buildPath": "project://build",
+          "debug": false,
+          "md5Cache": false,
+          "skipCompressTexture": false,
+          "sourceMaps": false,
+          "polyfills": {
+            "asyncFunctions": false
+          },
+          "experimentalEraseModules": false,
+          "useBuiltinServer": false,
+          "mainBundleIsRemote": false,
+          "mainBundleCompressionType": "merge_dep",
+          "replaceSplashScreen": false,
+          "startScene": "b8869bd5-41f7-4c22-9fab-49aefe94b1b4",
+          "outputName": "mac",
+          "scenes": [
+            {
+              "url": "db://assets/Loading.scene",
+              "uuid": "b8869bd5-41f7-4c22-9fab-49aefe94b1b4",
+              "inBundle": false
+            },
+            {
+              "url": "db://assets/Main.scene",
+              "uuid": "b51bddc7-b21b-42dc-82f1-122e020ecc19",
+              "inBundle": false
+            }
+          ],
+          "android": [],
+          "packages": {
+            "mac": {
+              "packageName": "com.vdef.cocos2d",
+              "renderBackEnd": {
+                "metal": true
+              },
+              "targetVersion": "10.14",
+              "supportM1": false,
+              "skipUpdateXcodeProject": false,
+              "__version__": "1.0.0"
+            },
+            "cocos-service": {
+              "configID": "96bf04",
+              "services": []
+            },
+            "native": {
+              "encrypted": false,
+              "xxteaKey": "29aroL0K1KMbKyhD",
+              "compressZip": false,
+              "JobSystem": "none",
+              "__version__": "1.0.2"
+            }
+          },
+          "__version__": "1.3.3",
+          "mac": []
+        },
+        "time": "12-6-2022 22:09",
         "dirty": false
       }
     }

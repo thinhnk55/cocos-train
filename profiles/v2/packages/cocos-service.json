@@ -7,6 +7,14 @@
     "windows": {
       "configID": "96bf04",
       "services": []
+    },
+    "android": {
+      "configID": "96bf04",
+      "services": []
+    },
+    "mac": {
+      "configID": "96bf04",
+      "services": []
     }
   },
   "builder-options": {

@@ -1,0 +1,21 @@
+{
+  "common": {
+    "buildPath": "project://build",
+    "outputName": "mac",
+    "mainBundleCompressionType": "merge_dep",
+    "platform": "mac",
+    "debug": false
+  },
+  "options": {
+    "mac": {
+      "packageName": "com.vdef.cocos2d",
+      "renderBackEnd": {
+        "metal": true
+      },
+      "targetVersion": "10.14",
+      "supportM1": false,
+      "skipUpdateXcodeProject": false,
+      "__version__": "1.0.0"
+    }
+  }
+}
