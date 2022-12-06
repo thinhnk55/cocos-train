@@ -1908,8 +1908,8 @@
     },
     "_lpos": {
       "__type__": "cc.Vec3",
-      "x": 566.97,
-      "y": -446.089,
+      "x": 550.588,
+      "y": -478.588,
       "z": 0
     },
     "_lrot": {
@@ -1959,7 +1959,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "74eDUuxMpH1qabBOfauYvL"
+    "fileId": "bdktv4OA1MK696U2KJ9GVx"
   },
   {
     "__type__": "sp.Skeleton",
@@ -2004,7 +2004,7 @@
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "66DrqFM1NEMY0//SaE3ToX"
+    "fileId": "70+G2cIzFBWqgqbKAwa8VX"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -2014,7 +2014,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "d6F5Z2PApM+aa+cjWXAsQI"
+    "fileId": "1esOd1Z95EUYfHqzBVTIw+"
   },
   {
     "__type__": "cc.UITransform",
