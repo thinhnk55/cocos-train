@@ -1,4 +1,4 @@
-import { _decorator, Component, ProgressBar, native, Label, log, Button, Node } from 'cc';
+import { _decorator, Component, ProgressBar, native, Label, log, Button, Node, Light } from 'cc';
 import {NATIVE} from 'cc/env';
 import { hotupdateManifest } from './manifest';
 const { ccclass, property } = _decorator;
@@ -33,7 +33,7 @@ export class Hotupdate extends Component {
     private _updateListener = null;
     private _failCount = 0;
     onLoad() {
-        log('start');
+        console.log('start');
         if (NATIVE) {
             this._storagePath = ((native.fileUtils ?
                  native.fileUtils.getWritablePath() : '/') + 'remote-assets');
@@ -109,10 +109,13 @@ export class Hotupdate extends Component {
     };
 
     checkUpdate() {
+        log('checkUpdate call');
         if (this.action == 1) {
+            log('checking update');
             return;
         }
         if (this.action == 2) {
+            log('updating');
             return;
         }
         this.loadCustomManifest();
@@ -125,8 +128,10 @@ export class Hotupdate extends Component {
         this._am.checkUpdate();
         this.action = 1;
         this.info.string = 'checking update ...';
+        log('checkUpdate DONE');
     }
     checkCb(event: any) {
+        log('check update callback');
         switch (event.getEventCode()) {
             case native.EventAssetsManager.ERROR_NO_LOCAL_MANIFEST:
                 this.info.string = "No local manifest file found, hot update skipped.";
@@ -151,9 +156,11 @@ export class Hotupdate extends Component {
         this._am.setEventCallback(null!);
         this._checkListener = null;
         this.action = 0;
+        log('check update callback DONE');
     }
 
     updateCb(event: any) {
+        log('update callback');
         var needRestart = false;
         var failed = false;
         switch (event.getEventCode()) {
@@ -205,9 +212,11 @@ export class Hotupdate extends Component {
             this._am.setEventCallback(null!);
             this._updateListener = null;
             this.action = 0;
+            log('update failed');
         }
 
         if (needRestart) {
+            log('update neet restart');
             this._am.setEventCallback(null!);
             this._updateListener = null;
             // Prepend the manifest's search path
@@ -215,9 +224,6 @@ export class Hotupdate extends Component {
             var newPaths = this._am.getLocalManifest().getSearchPaths();
             console.log(JSON.stringify(newPaths));
             Array.prototype.unshift.apply(searchPaths, newPaths);
-            // This value will be retrieved and appended to the default search path during game startup,
-            // please refer to samples/js-tests/main.js for detailed usage.
-            // !!! Re-add the search paths in main.js is very important, otherwise, new scripts won't take effect.
             localStorage.setItem('HotUpdateSearchPaths', JSON.stringify(searchPaths));
             native.fileUtils.setSearchPaths(searchPaths);
         }
