@@ -69,7 +69,7 @@ export class Hotupdate extends Component {
         log('onCheckUpdate', bundle, error);
     }
     onHotupdate(bundle:string, success:boolean, retry: boolean){
-        log('onCheckUpdate', bundle, success, retry);
+        log('onHotupdate', bundle, success, retry);
     }
 }
 

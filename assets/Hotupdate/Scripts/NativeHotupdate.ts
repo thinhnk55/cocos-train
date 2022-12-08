@@ -9,32 +9,38 @@ export class NativeHotupdate {
     checkUpdateListener: Function = null;
     bundleName:string = null;
 
-    prepareBundle(buldleName: string, updateListener: Function, checkUpdateListener){
+    prepareBundle(buldleName: string, checkUpdateListener: Function, updateListener: Function){
         log('prepareBundle', buldleName);
         this.bundleName = buldleName;
         let versionManifest = ((native.fileUtils ?
-            native.fileUtils.getWritablePath() : '/') + 'remote-assets/') + buldleName + '/version.manifest'; 
+            native.fileUtils.getWritablePath() : '/') 
+            + 'remote-assets/') 
+            + buldleName 
+            + '/version.manifest'; 
         let isExist = native.fileUtils.isFileExist(versionManifest);
         if(isExist){
             log('version.manifest exist');
-            BundleManager.instance().loadBundle(buldleName, (error:number, buldle:AssetManager.Bundle) =>{
+            BundleManager.instance().loadBundle(buldleName, 
+                (error:number, buldle:AssetManager.Bundle) =>{
                 if(error == 0){
                     buldle.load('version.manifest', (error:Error, asset:Asset) =>{
                         if(error){
                             return;
                         }
                         var manifestUrl = asset.nativeUrl;
-                        this.prepare(manifestUrl, buldleName, updateListener, checkUpdateListener);
+                        this.prepare(manifestUrl, buldleName,
+                             checkUpdateListener, updateListener);
                     })
                 }
             });
         }else{
             log('version.manifest not exist');
-            this.prepare('', buldleName, updateListener, checkUpdateListener);
+            this.prepare('', buldleName, checkUpdateListener, updateListener);
         }
     }
         
-    prepare(manifestUrl: string, path: string, updateListener: Function, checkUpdateListener){
+    prepare(manifestUrl: string, path: string, 
+        checkUpdateListener: Function, updateListener: Function){
         log('prepare: ', manifestUrl, path);
         this.storagePath = native.fileUtils.getWritablePath() + 'remote-assets/' + path;       
         this.am = new native.AssetsManager(manifestUrl, this.storagePath, 
@@ -45,9 +51,10 @@ export class NativeHotupdate {
             this.am.loadLocalManifest(manifestUrl);
         }
         this.am.setVerifyCallback(function (path: string, asset: native.ManifestAsset) {
+            log('hotupdate setVerifyCallback:', path, asset.path, asset.compressed);
             var compressed = asset.compressed;
             if (compressed) {
-                return false;
+                return true;
             }else {
                 return true;
             }
@@ -75,6 +82,7 @@ export class NativeHotupdate {
     }
 
     versionCompareHandle(versionA: string, versionB: string) {
+        log('versionCompareHandle:', versionA, versionB);
         var vA = versionA.split('.');
         var vB = versionB.split('.');
         for (var i = 0; i < vA.length; ++i) {
@@ -121,21 +129,27 @@ export class NativeHotupdate {
         let error = NativeHotupdateCheckUpdateError.NONE;
         switch (event.getEventCode()) {            
             case native.EventAssetsManager.ERROR_NO_LOCAL_MANIFEST:
+                log('native.EventAssetsManager.ERROR_NO_LOCAL_MANIFEST');
                 error = NativeHotupdateCheckUpdateError.ERROR_NO_LOCAL_MANIFEST;
                 break;
             case native.EventAssetsManager.ERROR_DOWNLOAD_MANIFEST:
+                log('native.EventAssetsManager.ERROR_DOWNLOAD_MANIFEST');
                 error = NativeHotupdateCheckUpdateError.ERROR_DOWNLOAD_MANIFEST;
                 break;
             case native.EventAssetsManager.ERROR_PARSE_MANIFEST:
+                log('native.EventAssetsManager.ERROR_PARSE_MANIFEST');
                 error = NativeHotupdateCheckUpdateError.ERROR_PARSE_MANIFEST;
                 break;
             case native.EventAssetsManager.ALREADY_UP_TO_DATE:
+                log('native.EventAssetsManager.ALREADY_UP_TO_DATE');
                 error = NativeHotupdateCheckUpdateError.ALREADY_UP_TO_DATE;
                 break;
             case native.EventAssetsManager.NEW_VERSION_FOUND:
+                log('native.EventAssetsManager.NEW_VERSION_FOUND');
                 error = NativeHotupdateCheckUpdateError.NEW_VERSION_FOUND;
                 break;
             default:
+                log('native.EventAssetsManager.default', event.getEventCode());
                 break;
         }
         this.am.setEventCallback(null!);
@@ -145,55 +159,65 @@ export class NativeHotupdate {
     }
 
     hotUpdate(){
+        log('hoy update start');
         this.am.setEventCallback(this.hotupdateCallBack.bind(this));
         this.am.update();
         this.action = NativeHotupdateAction.HOTUPDATE;
+        log('hoy update run ...');
     }
     hotupdateCallBack(event: any){
-        let success = true;
+        log('hotupdateCallBack');
+        let success = false;
         let canRetry = false;
         switch (event.getEventCode()) {
             case native.EventAssetsManager.ERROR_NO_LOCAL_MANIFEST:
-                success = false;
+                log('native.EventAssetsManager.ERROR_NO_LOCAL_MANIFEST');
                 break;
             case native.EventAssetsManager.UPDATE_PROGRESSION:
                 break;
             case native.EventAssetsManager.ERROR_DOWNLOAD_MANIFEST:
+                log('native.EventAssetsManager.ERROR_DOWNLOAD_MANIFEST');
+                break;
             case native.EventAssetsManager.ERROR_PARSE_MANIFEST:
-                success = false;
+                log('native.EventAssetsManager.ERROR_PARSE_MANIFEST');
                 break;
             case native.EventAssetsManager.ALREADY_UP_TO_DATE:
-                success = false;
+                log('native.EventAssetsManager.ALREADY_UP_TO_DATE');
                 break;
             case native.EventAssetsManager.UPDATE_FINISHED:
-                success = false;
+                log('native.EventAssetsManager.UPDATE_FINISHED');
+                success = true;
                 break;
             case native.EventAssetsManager.UPDATE_FAILED:
+                log('native.EventAssetsManager.UPDATE_FAILED');
                 this.action = NativeHotupdateAction.NONE;
-                success = false;
                 canRetry = true;
                 break;
             case native.EventAssetsManager.ERROR_UPDATING:
-                success = false;
+                log('native.EventAssetsManager.ERROR_UPDATING');
                 break;
             case native.EventAssetsManager.ERROR_DECOMPRESS:
-                success = false;
+                log('native.EventAssetsManager.ERROR_DECOMPRESS');
                 break;
             default:
+                log('native.EventAssetsManager.default', event.getEventCode());
                 break;
         }
+        log('hotupdateCallBack success canRetry', success, canRetry);
         if (success) {
             this.am.setEventCallback(null!);
             var searchPaths = native.fileUtils.getSearchPaths();
             var newPaths = this.am.getLocalManifest().getSearchPaths();
             Array.prototype.unshift.apply(searchPaths, newPaths);
             localStorage.setItem('HotUpdateSearchPaths', JSON.stringify(searchPaths));
+            log('HotUpdateSearchPaths', JSON.stringify(searchPaths));
             native.fileUtils.setSearchPaths(searchPaths);
         }else{
             this.am.setEventCallback(null!);
         }   
         this.action = NativeHotupdateAction.NONE;    
         this.updateListener(this.bundleName, success, canRetry);
+        log('hotupdateCallBack FINISH');
     }
 
     retry(){
