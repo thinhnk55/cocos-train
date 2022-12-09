@@ -31,7 +31,7 @@ export class Hotupdate extends Component {
     nativeHotupdate:NativeHotupdate = null;
     
     onLoad() {       
-        this.bundleNameInput.string = 'Test';
+        this.bundleNameInput.string = 'loading';
         this.nativeHotupdate = new NativeHotupdate();
         let info = this.info;
         this.prepareButton
