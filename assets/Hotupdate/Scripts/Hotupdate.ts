@@ -26,50 +26,52 @@ export class Hotupdate extends Component {
     retryButton:Button = null!;
 
     @property({type:EditBox})
-    bundleNameInput:EditBox = null!;
+    pathNameInput:EditBox = null!;
 
     nativeHotupdate:NativeHotupdate = null;
     
     onLoad() {       
-        this.bundleNameInput.string = 'loading';
+        this.pathNameInput.string = 'loading';
         this.nativeHotupdate = new NativeHotupdate();
         let info = this.info;
         this.prepareButton
         .node
         .on(Node.EventType.TOUCH_END, (event) => {
-            let bundle = this.bundleNameInput.string;
-            info.string = 'prepareButton pressed ' + bundle;
-            this.nativeHotupdate.prepareBundle(bundle, this.onCheckUpdate, this.onHotupdate);
+            let path = this.pathNameInput.string;
+            info.string = 'prepareButton pressed ' + path;
+            this.nativeHotupdate.prepare(path, this.onCheckUpdateEnd, this.onUpdateProgress, this.onUpdateEnd);
         });
 
         this.checkButton
         .node
         .on(Node.EventType.TOUCH_END, (event) => {
-            let bundle = this.bundleNameInput.string;
-            info.string = 'checkButton pressed ' + bundle;
-            let result = this.nativeHotupdate.checkUpdate();
-            log('check update: ', result);
+            let path = this.pathNameInput.string;
+            info.string = 'checkButton pressed ' + path;
+            this.nativeHotupdate.checkUpdate();
         });
         this.updateButton
         .node
         .on(Node.EventType.TOUCH_END, (event) => {
-            let bundle = this.bundleNameInput.string;
-            info.string = 'updateButton pressed ' + bundle;
-            this.nativeHotupdate.hotUpdate();
+            let path = this.pathNameInput.string;
+            info.string = 'updateButton pressed ' + path;
+            let result = this.nativeHotupdate.hotUpdate();
         });
         this.retryButton
         .node
         .on(Node.EventType.TOUCH_END, (event) => {
-            let bundle = this.bundleNameInput.string;
-            info.string = 'retryButton pressed ' + bundle;
+            let path = this.pathNameInput.string;
+            info.string = 'retryButton pressed ' + path;
             this.nativeHotupdate.retry();
         });
     }
-    onCheckUpdate(bundle:string, error:number){
-        log('onCheckUpdate', bundle, error);
+    onCheckUpdateEnd(path:string, event:any){
+        log('onCheckUpdateEnd', path, event.getEventCode());
     }
-    onHotupdate(bundle:string, success:boolean, retry: boolean){
-        log('onHotupdate', bundle, success, retry);
+    onUpdateProgress(path:string, event:any){
+        log('onUpdateProgress', path, event.getEventCode());
+    }
+    onUpdateEnd(path:string, event:any){
+        log('onUpdateEnd', path, event.getEventCode());
     }
 }
 

@@ -21,11 +21,11 @@
     "_active": true,
     "_components": [],
     "_prefab": {
-      "__id__": 39
+      "__id__": 43
     },
     "autoReleaseAssets": false,
     "_globals": {
-      "__id__": 64
+      "__id__": 74
     },
     "_id": "b8869bd5-41f7-4c22-9fab-49aefe94b1b4"
   },
@@ -47,13 +47,13 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 36
+        "__id__": 40
       },
       {
-        "__id__": 37
+        "__id__": 41
       },
       {
-        "__id__": 38
+        "__id__": 42
       }
     ],
     "_prefab": null,
@@ -141,7 +141,7 @@
     "_priority": 1073741824,
     "_fov": 45,
     "_fovAxis": 0,
-    "_orthoHeight": 540,
+    "_orthoHeight": 581.3400758533502,
     "_near": 0,
     "_far": 2000,
     "_color": {
@@ -201,6 +201,12 @@
       },
       {
         "__id__": 26
+      },
+      {
+        "__id__": 36
+      },
+      {
+        "__id__": 38
       }
     ]
   },
@@ -592,6 +598,46 @@
     ]
   },
   {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": null,
+    "sourceInfo": null,
+    "propertyPath": [
+      "fileProgress"
+    ],
+    "target": {
+      "__id__": 17
+    },
+    "targetInfo": {
+      "__id__": 37
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "075YXn/XZNVK87/Y5iJJgl"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": null,
+    "sourceInfo": null,
+    "propertyPath": [
+      "byteProgress"
+    ],
+    "target": {
+      "__id__": 27
+    },
+    "targetInfo": {
+      "__id__": 39
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "075YXn/XZNVK87/Y5iJJgl"
+    ]
+  },
+  {
     "__type__": "cc.UITransform",
     "_name": "",
     "_objFlags": 0,
@@ -661,28 +707,34 @@
     "fileId": "b8869bd5-41f7-4c22-9fab-49aefe94b1b4",
     "targetOverrides": [
       {
-        "__id__": 40
+        "__id__": 44
       },
       {
-        "__id__": 43
+        "__id__": 47
       },
       {
-        "__id__": 46
+        "__id__": 50
       },
       {
-        "__id__": 49
+        "__id__": 53
       },
       {
-        "__id__": 52
+        "__id__": 56
       },
       {
-        "__id__": 55
+        "__id__": 59
       },
       {
-        "__id__": 58
+        "__id__": 62
       },
       {
-        "__id__": 61
+        "__id__": 65
+      },
+      {
+        "__id__": 68
+      },
+      {
+        "__id__": 71
       }
     ],
     "nestedPrefabInstanceRoots": [
@@ -697,7 +749,7 @@
       "__id__": 5
     },
     "sourceInfo": {
-      "__id__": 41
+      "__id__": 45
     },
     "propertyPath": [
       "info"
@@ -706,7 +758,7 @@
       "__id__": 5
     },
     "targetInfo": {
-      "__id__": 42
+      "__id__": 46
     }
   },
   {
@@ -727,7 +779,7 @@
       "__id__": 5
     },
     "sourceInfo": {
-      "__id__": 44
+      "__id__": 48
     },
     "propertyPath": [
       "fileInfo"
@@ -736,7 +788,7 @@
       "__id__": 5
     },
     "targetInfo": {
-      "__id__": 45
+      "__id__": 49
     }
   },
   {
@@ -757,7 +809,7 @@
       "__id__": 5
     },
     "sourceInfo": {
-      "__id__": 47
+      "__id__": 51
     },
     "propertyPath": [
       "byteInfo"
@@ -766,7 +818,7 @@
       "__id__": 5
     },
     "targetInfo": {
-      "__id__": 48
+      "__id__": 52
     }
   },
   {
@@ -787,7 +839,7 @@
       "__id__": 5
     },
     "sourceInfo": {
-      "__id__": 50
+      "__id__": 54
     },
     "propertyPath": [
       "fileProgress"
@@ -796,7 +848,7 @@
       "__id__": 5
     },
     "targetInfo": {
-      "__id__": 51
+      "__id__": 55
     }
   },
   {
@@ -818,7 +870,7 @@
       "__id__": 5
     },
     "sourceInfo": {
-      "__id__": 53
+      "__id__": 57
     },
     "propertyPath": [
       "byteProgress"
@@ -827,7 +879,7 @@
       "__id__": 5
     },
     "targetInfo": {
-      "__id__": 54
+      "__id__": 58
     }
   },
   {
@@ -849,7 +901,7 @@
       "__id__": 5
     },
     "sourceInfo": {
-      "__id__": 56
+      "__id__": 60
     },
     "propertyPath": [
       "checkButton"
@@ -858,7 +910,7 @@
       "__id__": 5
     },
     "targetInfo": {
-      "__id__": 57
+      "__id__": 61
     }
   },
   {
@@ -879,7 +931,7 @@
       "__id__": 5
     },
     "sourceInfo": {
-      "__id__": 59
+      "__id__": 63
     },
     "propertyPath": [
       "updateButton"
@@ -888,7 +940,7 @@
       "__id__": 5
     },
     "targetInfo": {
-      "__id__": 60
+      "__id__": 64
     }
   },
   {
@@ -909,7 +961,7 @@
       "__id__": 5
     },
     "sourceInfo": {
-      "__id__": 62
+      "__id__": 66
     },
     "propertyPath": [
       "retryButton"
@@ -918,7 +970,7 @@
       "__id__": 5
     },
     "targetInfo": {
-      "__id__": 63
+      "__id__": 67
     }
   },
   {
@@ -934,21 +986,81 @@
     ]
   },
   {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 5
+    },
+    "sourceInfo": {
+      "__id__": 69
+    },
+    "propertyPath": [
+      "prepareButton"
+    ],
+    "target": {
+      "__id__": 5
+    },
+    "targetInfo": {
+      "__id__": 70
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "964RszqfJC64yzg6k3iLMr"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "3arNqEMQRDAIffMPTdu8hW"
+    ]
+  },
+  {
+    "__type__": "cc.TargetOverrideInfo",
+    "source": {
+      "__id__": 5
+    },
+    "sourceInfo": {
+      "__id__": 72
+    },
+    "propertyPath": [
+      "pathNameInput"
+    ],
+    "target": {
+      "__id__": 5
+    },
+    "targetInfo": {
+      "__id__": 73
+    }
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "964RszqfJC64yzg6k3iLMr"
+    ]
+  },
+  {
+    "__type__": "cc.TargetInfo",
+    "localID": [
+      "15UunJSFVBgZpLU8ZrOvVv"
+    ]
+  },
+  {
     "__type__": "cc.SceneGlobals",
     "ambient": {
-      "__id__": 65
+      "__id__": 75
     },
     "shadows": {
-      "__id__": 66
+      "__id__": 76
     },
     "_skybox": {
-      "__id__": 67
+      "__id__": 77
     },
     "fog": {
-      "__id__": 68
+      "__id__": 78
     },
     "octree": {
-      "__id__": 69
+      "__id__": 79
     }
   },
   {
