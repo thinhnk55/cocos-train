@@ -9,8 +9,12 @@ export class NativeHotupdate {
     onCheckUpdateEnd: Function = null;
     onUpdateProgress: Function = null;
 
+    canRetry:boolean = false;
+    canCheckupdate:boolean = false;
+
     prepare(path: string, onCheckUpdateEnd: Function, onUpdateProgress: Function, onUpdateEnd: Function){
         log('prepare', path);
+        this.canRetry = false;
         this.path = path;
         this.storagePath = ((native.fileUtils ?
             native.fileUtils.getWritablePath() : '/') 
@@ -29,14 +33,13 @@ export class NativeHotupdate {
         this.am = new native.AssetsManager('', this.storagePath, 
                 this.versionCompareHandle.bind(this));
         let result = this.am.loadLocalManifest(manifest, this.storagePath);
-        log('loadLocalManifest', result, manifestData);
         this.am.setVerifyCallback(function (path: string, asset: native.ManifestAsset) {
-            log('setVerifyCallback', asset.path)
             return true;
         });
         this.onCheckUpdateEnd = onCheckUpdateEnd;
         this.onUpdateProgress = onUpdateProgress;
         this.onUpdateEnd = onUpdateEnd;
+        this.canCheckupdate = true;
     }
 
     debug(){
@@ -62,15 +65,12 @@ export class NativeHotupdate {
 
     versionCompareHandle(versionA: string, versionB: string) {
         if(versionA == versionB){
-            log('versionCompareHandle', versionA, versionB, 0);
             return 0;
         }
-        log('versionCompareHandle', versionA, versionB, -1);
         return -1;
     };
 
     checkUpdate(){
-        log('checkUpdate');
         this.am.setEventCallback(this.checkUpdateCallBack.bind(this));
         this.am.checkUpdate();
     }
@@ -82,12 +82,14 @@ export class NativeHotupdate {
                 break;
             case native.EventAssetsManager.ERROR_DOWNLOAD_MANIFEST:
                 log('checkUpdate', this.path, 'ERROR_DOWNLOAD_MANIFEST');
+                this.canCheckupdate = true;
                 break;
             case native.EventAssetsManager.ERROR_PARSE_MANIFEST:
                 log('checkUpdate', this.path, 'ERROR_PARSE_MANIFEST');
                 break;
             case native.EventAssetsManager.NEW_VERSION_FOUND:
                 log('checkUpdate', this.path, 'NEW_VERSION_FOUND');
+                this.canCheckupdate = false;
                 break;
             case native.EventAssetsManager.ALREADY_UP_TO_DATE:
                 log('checkUpdate', this.path, 'ALREADY_UP_TO_DATE');
@@ -115,7 +117,6 @@ export class NativeHotupdate {
     }
 
     hotUpdate(){
-        log('hotUpdate');
         this.am.setEventCallback(this.hotupdateCallBack.bind(this));
         this.am.update();
     }
@@ -150,8 +151,9 @@ export class NativeHotupdate {
             case native.EventAssetsManager.UPDATE_FINISHED:
                 log('checkUpdate', this.path, 'UPDATE_FINISHED');
                 break;
-            case native.EventAssetsManager.UPDATE_FINISHED:
-                log('checkUpdate', this.path, 'UPDATE_FINISHED');
+            case native.EventAssetsManager.UPDATE_FAILED:
+                log('checkUpdate', this.path, 'UPDATE_FAILED');
+                this.canRetry = true;
                 break;
             case native.EventAssetsManager.ERROR_DECOMPRESS:
                 log('checkUpdate', this.path, 'ERROR_DECOMPRESS');
@@ -160,6 +162,9 @@ export class NativeHotupdate {
         this.onUpdateEnd(this.path, event); 
     }
     retry(){
-        this.am.downloadFailedAssets();
+        this.debug();
+        if(this.canRetry){
+            this.am.downloadFailedAssets();
+        }
     }
 }
